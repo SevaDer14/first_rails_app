@@ -22,7 +22,7 @@ RSpec.describe "POST api/auth/sign_in", type: :request do
     end
   
     it 'is expected to return information about user' do
-      expect(response_json).to eq expected_responce
+      expect(response_json).to eq expected_response
     end
 
   end
