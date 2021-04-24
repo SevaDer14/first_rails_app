@@ -11,7 +11,6 @@ RSpec.describe 'GET /api/articles' do
     end
 
     it 'is expected to return all articles' do
-      binding.pry
       expect(response_json['articles'].count).to eq 3
     end
 
