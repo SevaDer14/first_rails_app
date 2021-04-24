@@ -1,5 +1,7 @@
 RSpec.describe 'GET /api/articles' do
   describe 'succesfully' do
+    let!(:article_1) { create(:article, title: 'This is an awesome title') }
+    let!(:articles_2_3) { 2.times { create(:article) } }
     before do
       get '/api/articles'
     end
@@ -9,6 +11,7 @@ RSpec.describe 'GET /api/articles' do
     end
 
     it 'is expected to return all articles' do
+      binding.pry
       expect(response_json['articles'].count).to eq 3
     end
 
