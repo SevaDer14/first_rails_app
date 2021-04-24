@@ -9,10 +9,9 @@ RSpec.describe "GET /api/articles" do
     it "is expected to return 200 status" do
       expect(response).to have_http_status 200
     end
-    
-    it "is expected to return all articles" do
-      binding.pry
-      expect(response_json["articles"].count).to eq 3
+
+    it 'is expected to return all articles' do
+      expect(response_json['articles'].count).to eq 3
     end
 
     it "is expected to return article titles" do
