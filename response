@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/demerzel/Projects/first_rails_app/spec/requests/api/api_provides_functionality_to_update_article_spec.rb:14 :
+
+     [1;34m9[0m:         } 
+    [1;34m10[0m:       }
+    [1;34m11[0m:     [32mend[0m
+    [1;34m12[0m: 
+    [1;34m13[0m:     it [31m[1;31m'[0m[31mis expected to respond with 202[1;31m'[0m[31m[0m [32mdo[0m
+ => [1;34m14[0m:       binding.pry
+    [1;34m15[0m:       expect(response).to have_http_status [1;34m202[0m
+    [1;34m16[0m:     [32mend[0m
+    [1;34m17[0m: 
+    [1;34m18[0m:     it [31m[1;31m'[0m[31mis expected to respond with success message[1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m19[0m:       expect([1;34;4mJSON[0m.parse(response.body)[[31m[1;31m'[0m[31mmessage[1;31m'[0m[31m[0m]).to eq [31m[1;31m'[0m[31mYour article is successfully updated[1;31m'[0m[31m[0m
+
