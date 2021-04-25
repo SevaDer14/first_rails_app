@@ -60,5 +60,6 @@ RSpec.describe "POST api/auth/sign_in", type: :request do
       expect(response_json['errors']).to eq ['Invalid login credentials. Please try again.']
     end
   end
-
 end
+
+
