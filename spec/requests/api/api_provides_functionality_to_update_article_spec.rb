@@ -29,4 +29,26 @@ RSpec.describe "PUT /api/articles/:id", type: :request do
       .to eq "Updated Title - Happy Birthday"
     end
   end
+
+  describe 'the sad path' do
+    let(:user) { create(:user)  }
+    let(:user_credentials) { user.create_new_auth_token }
+    before do
+      post '/api/articles', params: { 
+        article: { 
+          title: 'Boo', 
+          body: '' 
+        } 
+      },
+      headers: user_credentials
+    end
+
+    it 'is expected to respond with 422' do
+      expect(response).to have_http_status 422
+    end
+
+    it 'is expected to respond with error message' do
+      expect(JSON.parse(response.body)['message']).to eq 'Body can\'t be blank'
+    end
+  end
 end
