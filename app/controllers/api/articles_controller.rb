@@ -1,5 +1,6 @@
 class Api::ArticlesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:create, :update]
+  
   def index
     articles = Article.all
     render json: { articles: articles }
@@ -14,13 +15,13 @@ class Api::ArticlesController < ApplicationController
     article = Article.create(params[:article].permit(:title, :body))
 
     if article.persisted? 
-      render json: { message: 'Your article is successfully created' }, status: 201
+      render json: { message: 'Your article is successfully created', article: article }, status: 201
     else
       render json: { message: article.errors.full_messages.to_sentence }, status: 422
     end    
   end
 
-  def update
+  def update 
     article = Article.find(params['id'])
     article.update(title: params[:article][:title], body: params[:article][:body])
     render json: {article: article, message: 'Your article is successfully updated'}, status: 202

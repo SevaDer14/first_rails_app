@@ -1,13 +1,16 @@
 RSpec.describe "POST /api/articles", type: :request do
   
   describe "the happy path" do
+    let(:user) { create(:user)  }
+    let(:user_credentials) { user.create_new_auth_token }
     before do
       post '/api/articles', params: { 
         article: { 
           title: 'Not so fun with Node', 
           body: 'it is a configuration hell' 
         } 
-      }
+      },
+      headers: user_credentials
     end
 
     it 'is expected to respond with 201' do
@@ -20,13 +23,16 @@ RSpec.describe "POST /api/articles", type: :request do
   end
 
   describe 'the sad path' do
+    let(:user) { create(:user)  }
+    let(:user_credentials) { user.create_new_auth_token }
     before do
       post '/api/articles', params: { 
         article: { 
           title: '', 
           body: 'it is a configuration hell' 
         } 
-      }
+      },
+      headers: user_credentials
     end
 
     it 'is expected to respond with 422' do
