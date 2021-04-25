@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
-  before_action :authenticate_user!
+  
+  before_action :authenticate_user!, except: [:index, :show]
   
   rescue_from ActiveRecord::RecordNotFound, with: :no_such_record
 
